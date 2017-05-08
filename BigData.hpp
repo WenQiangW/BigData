@@ -54,6 +54,7 @@ private:
 		res[1] = takeover + '0';
 		return res;
 	}
+	
 	string Sub(string left, string right)
 	{
 		size_t Lsize = left.size();
