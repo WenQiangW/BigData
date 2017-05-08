@@ -13,7 +13,7 @@ ostream& operator<<(ostream& out, const BigData& bigdata)
 	out << pData;
 	return out;
 }
-
+//构造函数
 BigData::BigData(INT64 data = UN_INT)
 :_value(data)
 {
