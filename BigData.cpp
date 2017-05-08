@@ -150,6 +150,7 @@ BigData BigData::operator*(const BigData& b)
 		return BigData(_strData);
 	return BigData(Mul(_strData, b._strData));
 }
+//重载/号
 BigData BigData::operator/(const BigData& b)
 {
 	//商值为0,1，-1
