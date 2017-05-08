@@ -180,7 +180,7 @@ BigData BigData::operator/(const BigData& b)
 
 	return BigData(Div(_strData, b._strData));
 }
-
+//判断是否超过范围，需要用string表示
 bool BigData::IsINT64Overflow()const
 {
 	std::string strTemp("+9223372036854775807");
