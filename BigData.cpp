@@ -1,8 +1,8 @@
 #include"BigData.hpp"
 
-INT64 UN_INT = 0xcccccccccccccccc;
-const INT64 MaxValue = 9223372036854775807;
-const INT64 MinValue = -9223372036854775807;
+INT64 UN_INT = 0xcccccccccccccccc;//é»˜è®¤æ•°å­—
+const INT64 MaxValue = 9223372036854775807; //åœ¨å¤§å€¼çš„èŒƒå›´
+const INT64 MinValue = -9223372036854775807;//
 
 ostream& operator<<(ostream& out, const BigData& bigdata)
 {
@@ -16,7 +16,7 @@ ostream& operator<<(ostream& out, const BigData& bigdata)
 BigData::BigData(INT64 data = UN_INT)
 :_value(data)
 {
-	//Êı×Ö·ÅÈë×Ö·û´®ÖĞ
+	//æ•°å­—æ”¾å…¥å­—ç¬¦ä¸²ä¸­
 	_strData = "+";
 	INT64 temp = _value;
 	if (temp < 0)
@@ -34,7 +34,7 @@ BigData::BigData(INT64 data = UN_INT)
 	reverse(_strData.begin() + 1, _strData.end());
 }
 
-//Ä£Äâatoi
+//æ¨¡æ‹Ÿatoi
 BigData::BigData(const string& strData)
 : _value(0)
 , _strData("+0")
@@ -51,24 +51,24 @@ BigData::BigData(const string& strData)
 		pData++;	
 	
 		
-	//´¦ÀíÇ°ÖÃ¿Õ¸ñ
+	//å¤„ç†å‰ç½®ç©ºæ ¼
 	while (isspace(*pData))
 		pData++;
 	if ('\0' == *pData)
 		return;
 
-	//´¦Àí Ç°ÖÃ0
+	//å¤„ç† å‰ç½®0
 	while ('0' == *pData)
 		pData++;
 	if ('\0' == *pData)
 		return;
-	//´¦ÀíÇ°ÖÃ·ÇÊı×Ö
+	//å¤„ç†å‰ç½®éæ•°å­—
 	if (*pData > '9' || *pData < '0')
 		return;
 
-	//´¦ÀíÊ£Óà²¿·Ö
+	//å¤„ç†å‰©ä½™éƒ¨åˆ†
 	size_t Length = strlen(pData);
-	_strData.resize(Length + 1);//¶à¼ÓÒ»¸ö·ûºÅÎ»
+	_strData.resize(Length + 1);//å¤šåŠ ä¸€ä¸ªç¬¦å·ä½
 	if (symbol == '-')
 		_strData[0] = '-';
 	size_t count = 1;
@@ -98,20 +98,20 @@ BigData BigData::operator+(const BigData& b)
 {
 	if (!IsINT64Overflow() && !b.IsINT64Overflow())
 	{
-		//Ã»ÓĞ³¬³ö·¶Î§
-		if (_strData[0] != b._strData[0])//ÒìºÅ
+		//æ²¡æœ‰è¶…å‡ºèŒƒå›´
+		if (_strData[0] != b._strData[0])//å¼‚å·
 			return BigData(_value + b._value);
 		else
 		{
 			//10 - 2 = 8, 7
 			//-10 - -2 = -8,-7
-			//Í¬ºÅ µ«ÊÇÃ»ÓĞ³¬³ö·¶Î§
+			//åŒå· ä½†æ˜¯æ²¡æœ‰è¶…å‡ºèŒƒå›´
 			if ((_strData[0] == '+' && MaxValue - _value >= b._value) ||
 				(_strData[0] == '-' && MinValue - _value <= b._value))
 				return BigData(_value + b._value);
 		}
 	}
-	if (_strData[0] == b._strData[0]) //Í¬ºÅ
+	if (_strData[0] == b._strData[0]) //åŒå·
 		return BigData(Add(_strData, b._strData));
 	return BigData(Sub(_strData, b._strData));
 }
@@ -119,21 +119,21 @@ BigData BigData::operator-(const BigData& b)
 {
 	if (!IsINT64Overflow() && !b.IsINT64Overflow())
 	{
-		//Ã»ÓĞ³¬³ö·¶Î§
-		if (_strData[0] == b._strData[0])//Í¬ºÅºÅ
+		//æ²¡æœ‰è¶…å‡ºèŒƒå›´
+		if (_strData[0] == b._strData[0])//åŒå·å·
 			return BigData(_value - b._value);
 		else
 		{
-			// [10,-10]  2ºÍ -7
+			// [10,-10]  2å’Œ -7
 			// -10 +2 = -8
 			// 10 + -7 = 3
-			//ÒìºÅ µ«ÊÇÃ»ÓĞ³¬³ö·¶Î§
+			//å¼‚å· ä½†æ˜¯æ²¡æœ‰è¶…å‡ºèŒƒå›´
 			if ((_strData[0] == '+' && MinValue + _value <= b._value) ||
 				(_strData[0] == '-' && MaxValue + _value >= b._value))
 				return BigData(_value - b._value);
 		}
 	}
-	if (_strData[0] == b._strData[0]) //Í¬ºÅ
+	if (_strData[0] == b._strData[0]) //åŒå·
 		return BigData(Sub(_strData, b._strData));
 	return BigData(Add(_strData, b._strData));
 }
@@ -150,29 +150,29 @@ BigData BigData::operator*(const BigData& b)
 }
 BigData BigData::operator/(const BigData& b)
 {
-	//ÉÌÖµÎª0,1£¬-1
+	//å•†å€¼ä¸º0,1ï¼Œ-1
 	char* left = (char *)_strData.c_str();
 	char* right = (char *)b._strData.c_str();
-	//³ıÊı²»ÄÜÎª0
+	//é™¤æ•°ä¸èƒ½ä¸º0
 	if (b._value == 0)
 	{
-		cout << "³ıÊı²»ÄÜÎª0" << endl;
+		cout << "é™¤æ•°ä¸èƒ½ä¸º0" << endl;
 		return BigData(0);
 	}
-	//ÉÌÖµÎª0
+	//å•†å€¼ä¸º0
 	if (_strData.size() < b._strData.size())
 		return BigData(0);
 	else if (_strData.size() == b._strData.size() && strcmp(_strData.c_str() + 1, b._strData.c_str() + 1) < 0)
 		return BigData(0);
-	//ÉÌÖµÎª 1	
+	//å•†å€¼ä¸º 1	
     if (strcmp(left, right) == 0)
 		return BigData(1);
-	//ÉÌÖµÎª-1
+	//å•†å€¼ä¸º-1
 	if (strcmp(_strData.c_str() + 1, b._strData.c_str() + 1) == 0 && *left != *right)
 		return BigData(-1);
-	else if (b._value == 1) //±»³ıÊıÎª1
+	else if (b._value == 1) //è¢«é™¤æ•°ä¸º1
 		return BigData(_strData);
-	else if (b._value == -1) //±»³ıÊıÎª-1
+	else if (b._value == -1) //è¢«é™¤æ•°ä¸º-1
 		return BigData(b._strData);
 
 	return BigData(Div(_strData, b._strData));
