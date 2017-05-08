@@ -139,7 +139,7 @@ BigData BigData::operator-(const BigData& b)
 		return BigData(Sub(_strData, b._strData));
 	return BigData(Add(_strData, b._strData));
 }
-
+//重载*号
 BigData BigData::operator*(const BigData& b)
 {
 	if (_value == 0 || b._value == 0)
