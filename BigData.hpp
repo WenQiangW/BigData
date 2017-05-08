@@ -22,7 +22,7 @@ private:
 	bool IsINT64Overflow()const;//判断是否超过long long范围
 
 	//Add  这些函数的参数 肯定都带符号，
-	string Add(string left, string right)
+	string Add(string left, string right) //加函数，被重载函数调用
 	{
 		size_t Lsize = left.size();
 		size_t Rsize = right.size();
