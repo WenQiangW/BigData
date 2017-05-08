@@ -5,7 +5,6 @@ using namespace std;
 
 typedef long long INT64;
 
-
 class BigData
 {
 public:
