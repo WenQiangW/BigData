@@ -19,30 +19,30 @@ public:
 	BigData& operator=(const BigData& b);
 	friend ostream& operator<<(ostream& out, const BigData& bigdata);
 private:
-	bool IsINT64Overflow()const;
+	bool IsINT64Overflow()const;/
 
-	//Add  ÕâĞ©º¯ÊıµÄ²ÎÊı ¿Ï¶¨¶¼´ø·ûºÅ£¬
+	//Add  è¿™äº›å‡½æ•°çš„å‚æ•° è‚¯å®šéƒ½å¸¦ç¬¦å·ï¼Œ
 	string Add(string left, string right)
 	{
 		size_t Lsize = left.size();
 		size_t Rsize = right.size();
 		string res;
 		char symbol = 0;
-		//Õı³£µ÷ÓÃaddµÄÎªÍ¬ºÅ£¬
-		//µ±Îª-Ê±ºò£¬ÒìºÅµ÷ÓÃAdd,Î»ÊıÏàÍ¬Ê±£¬·ûºÅÎ»Îªleft[0],Î»Êı²»Í¬Ê±£¬·ûºÅÎ»½»»»Ö®Ç°µÄleft[0]
-		if (Lsize < Rsize) //Ê¹leftµÄÎ»Êı´ó
+		//æ­£å¸¸è°ƒç”¨addçš„ä¸ºåŒå·ï¼Œ
+		//å½“ä¸º-æ—¶å€™ï¼Œå¼‚å·è°ƒç”¨Add,ä½æ•°ç›¸åŒæ—¶ï¼Œç¬¦å·ä½ä¸ºleft[0],ä½æ•°ä¸åŒæ—¶ï¼Œç¬¦å·ä½äº¤æ¢ä¹‹å‰çš„left[0]
+		if (Lsize < Rsize) //ä½¿leftçš„ä½æ•°å¤§
 		{
-			if (left[0] != right[0]) //ÒìºÅ
+			if (left[0] != right[0]) //å¼‚å·
 				symbol = left[0];
 			std::swap(Lsize, Rsize);
 			std::swap(left, right);
 		}	
-		res.resize(Lsize + 1); //¿ÉÄÜ×îºó²úÉú½øÎ»
+		res.resize(Lsize + 1); //å¯èƒ½æœ€åäº§ç”Ÿè¿›ä½
 		if (symbol != 0)
 			res[0] = symbol;
 		else 
 			res[0] = left[0];
-		char takeover = 0;//½øÎ»
+		char takeover = 0;//è¿›ä½
 		for (size_t idx = 1; idx < Lsize; ++idx)
 		{
 			char temp = left[Lsize - idx] - '0' + takeover;
@@ -63,14 +63,14 @@ private:
 		{
 			std::swap(Lsize, Rsize);
 			std::swap(left, right);
-			if (left[0] == right[0] && left[0] == '+')//Ğ¡µÄ¼õÈ¥´óµÄ£¬ÇÒÍ¬ºÅµÄ»°£¬±ÈÈçleft = 5£¬right = 10£¬
+			if (left[0] == right[0] && left[0] == '+')//å°çš„å‡å»å¤§çš„ï¼Œä¸”åŒå·çš„è¯ï¼Œæ¯”å¦‚left = 5ï¼Œright = 10ï¼Œ
 				symbol = '-';
 			
-			if (left[0] == right[0] && left[0] == '-')//±ÈÈçleft = -5£¬right = -10£¬
+			if (left[0] == right[0] && left[0] == '-')//æ¯”å¦‚left = -5ï¼Œright = -10ï¼Œ
 				symbol = '+';
 		}
 		string res;
-		res.resize(Lsize);// ¼õÈ¥²»¿ÉÄÜ²úÉú½øÎ»
+		res.resize(Lsize);// å‡å»ä¸å¯èƒ½äº§ç”Ÿè¿›ä½
 		if (symbol != 0)
 			res[0] = symbol;
 		else
@@ -83,13 +83,13 @@ private:
 				temp -= right[Rsize - idx] - '0';
 			if (temp < 0)
 			{
-				int step = 1;//ÏòÇ°stepÎ»½èÎ»
+				int step = 1;//å‘å‰stepä½å€Ÿä½
 				while ((Lsize >(idx + step)) && left[Lsize - idx - step] == 0)
 				{
 					left[Lsize - idx - step] = '9';
 					step++;
 				}
-				left[Lsize - idx - step]--; //²»Îª0Ê± Òª-1
+				left[Lsize - idx - step]--; //ä¸ä¸º0æ—¶ è¦-1
 				temp += 10;
 			}
 			res[Lsize - idx] = temp % 10 + '0';
@@ -100,19 +100,19 @@ private:
 	{
 		size_t LSize = left.size();
 		size_t RSize = right.size();
-		if (LSize > RSize) //Î»ÊıĞ¡µÄ·Åµ½Íâ²ãÑ­»·
+		if (LSize > RSize) //ä½æ•°å°çš„æ”¾åˆ°å¤–å±‚å¾ªç¯
 		{
 			std::swap(LSize, RSize);
 			std::swap(left, right);
 		}
-		char takeover = 0; //½øÎ»
+		char takeover = 0; //è¿›ä½
 
 		size_t resSize = LSize + RSize - 1;
-		string res(resSize, '0');//È«¶¼³õÊ¼»¯'0';
-		size_t offset = 0;//½á¹ûÒÆÎ»
+		string res(resSize, '0');//å…¨éƒ½åˆå§‹åŒ–'0';
+		size_t offset = 0;//ç»“æœç§»ä½
 		for (size_t i = 1; i < LSize; ++i)
 		{
-			char cleft = left[LSize - i] - '0';// Íâ²ãÑ­¸÷¸öÎ»µÄÖµ
+			char cleft = left[LSize - i] - '0';// å¤–å±‚å¾ªå„ä¸ªä½çš„å€¼
 			takeover = 0;
 			for (size_t j = 1; j < RSize; ++j)
 			{
@@ -123,9 +123,9 @@ private:
 			}
 			offset++;
 		}
-		//×îºóÒ»´Î½øÎ»Ã»ÓĞĞ´Èëµ½½á¹ûÖĞ
+		//æœ€åä¸€æ¬¡è¿›ä½æ²¡æœ‰å†™å…¥åˆ°ç»“æœä¸­
 		res[1] = takeover + '0';
-		//·ûºÅ
+		//ç¬¦å·
 		if (left[0] == right[0])
 			res[0] = '+';
 		else
@@ -145,7 +145,7 @@ private:
 		size_t Rsize = right.size() - 1;
 		size_t len = Rsize;
 
-		while (*(pleft + len - 1) != '\0') //¸Ğ¾õÕâ¿ÉÄÜÔ½½ç
+		while (*(pleft + len - 1) != '\0') //æ„Ÿè§‰è¿™å¯èƒ½è¶Šç•Œ
 		{
 			if (!isLeftBig(pleft, len, pright, Rsize))
 			{
@@ -162,8 +162,8 @@ private:
 		return res;
 	}
 
-	//ÅĞ¶Ï±»³ıÊı´óÓÚ³ıÊı
-	bool isLeftBig(char* left, size_t Lsize, char* right, size_t Rsize)//leftÇ°Ãæ²»Îª0
+	//åˆ¤æ–­è¢«é™¤æ•°å¤§äºé™¤æ•°
+	bool isLeftBig(char* left, size_t Lsize, char* right, size_t Rsize)//leftå‰é¢ä¸ä¸º0
 	{
 		if (Lsize == Rsize && strncmp(left, right, Rsize) >= 0)
 			return true;
@@ -172,10 +172,10 @@ private:
 
 		return false;
 	} 
-	//¼ÆËãÉÌÖµ£¬²¢ÇÒ·µ»ØÓàÊı
+	//è®¡ç®—å•†å€¼ï¼Œå¹¶ä¸”è¿”å›ä½™æ•°
 	char loopsub(char*& left, size_t& Lsize, char*& right, size_t Rsize)
 	{
-		char count = '0';//Ïàµ±ÓÚÉÌÖµ	
+		char count = '0';//ç›¸å½“äºå•†å€¼	
 		while (isLeftBig(left, Lsize, right, Rsize))
 		{
 			for (size_t i = 0; i < Lsize; ++i)
@@ -185,9 +185,9 @@ private:
 					temp -= (right[Rsize - 1 - i] - '0');
 				if (temp < 0)
 				{
-					//ÏòÇ°½èÎ»
-					size_t step = 1;//½èµÄ²½Êı
-					while ((1 + i + step < Lsize) && left[Lsize - 1 - i - step] == 0) //¿Ï¶¨¿ÉÒÔ½èµ½£¬ÒòÎª×ó±ß´óÓÚÓÒ±ß
+					//å‘å‰å€Ÿä½
+					size_t step = 1;//å€Ÿçš„æ­¥æ•°
+					while ((1 + i + step < Lsize) && left[Lsize - 1 - i - step] == 0) //è‚¯å®šå¯ä»¥å€Ÿåˆ°ï¼Œå› ä¸ºå·¦è¾¹å¤§äºå³è¾¹
 					{
 						left[Lsize - 1 - i - step] = '9';
 						step++;
@@ -198,7 +198,7 @@ private:
 				left[Lsize - 1 - i] = temp + '0';
 			}
 			count++;
-			while (Lsize > 0 && *left == '0') //È¥³ıÇ°ÃæµÄ0
+			while (Lsize > 0 && *left == '0') //å»é™¤å‰é¢çš„0
 			{
 				left++;
 				Lsize--;
