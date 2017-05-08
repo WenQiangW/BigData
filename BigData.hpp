@@ -19,7 +19,7 @@ public:
 	BigData& operator=(const BigData& b);
 	friend ostream& operator<<(ostream& out, const BigData& bigdata);
 private:
-	bool IsINT64Overflow()const;//判断是否超过long long
+	bool IsINT64Overflow()const;//判断是否超过long long范围
 
 	//Add  这些函数的参数 肯定都带符号，
 	string Add(string left, string right)
