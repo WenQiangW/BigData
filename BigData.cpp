@@ -83,7 +83,7 @@ BigData::BigData(const string& strData)
 	if (symbol == '-')
 		_value = 0 - _value;
 }
-
+//赋值运算符重载
 BigData& BigData::operator=(const BigData& b)
 {
 	if (this != &b)
