@@ -94,7 +94,7 @@ BigData& BigData::operator=(const BigData& b)
 	}
 	return *this;
 }
-
+//重载+号
 BigData BigData::operator+(const BigData& b)
 {
 	if (!IsINT64Overflow() && !b.IsINT64Overflow())
@@ -116,6 +116,7 @@ BigData BigData::operator+(const BigData& b)
 		return BigData(Add(_strData, b._strData));
 	return BigData(Sub(_strData, b._strData));
 }
+//重载-号
 BigData BigData::operator-(const BigData& b)
 {
 	if (!IsINT64Overflow() && !b.IsINT64Overflow())
