@@ -4,6 +4,7 @@ INT64 UN_INT = 0xcccccccccccccccc;//默认数字
 const INT64 MaxValue = 9223372036854775807; //在大值的范围
 const INT64 MinValue = -9223372036854775807;//
 
+//重载输出运算符
 ostream& operator<<(ostream& out, const BigData& bigdata)
 {
 	char* pData = (char*)bigdata._strData.c_str();
