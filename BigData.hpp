@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 
-12
+1
 typedef long long INT64;
 
 class BigData
