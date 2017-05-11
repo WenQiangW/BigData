@@ -3,7 +3,7 @@
 INT64 UN_INT = 0xcccccccccccccccc;
 const INT64 MaxValue = 9223372036854775807;
 const INT64 MinValue = -9223372036854775807;
-12
+123
 ostream& operator<<(ostream& out, const BigData& bigdata)
 {
 	char* pData = (char*)bigdata._strData.c_str();
