@@ -1,10 +1,9 @@
 #include"BigData.hpp"
 
-INT64 UN_INT = 0xcccccccccccccccc;//默认数字
-const INT64 MaxValue = 9223372036854775807; //在大值的范围
-const INT64 MinValue = -9223372036854775807;//
+INT64 UN_INT = 0xcccccccccccccccc;
+const INT64 MaxValue = 9223372036854775807;
+const INT64 MinValue = -9223372036854775807;
 
-//重载输出运算符
 ostream& operator<<(ostream& out, const BigData& bigdata)
 {
 	char* pData = (char*)bigdata._strData.c_str();
@@ -14,7 +13,6 @@ ostream& operator<<(ostream& out, const BigData& bigdata)
 	return out;
 }
 
-//构造函数
 BigData::BigData(INT64 data = UN_INT)
 :_value(data)
 {
@@ -84,7 +82,7 @@ BigData::BigData(const string& strData)
 	if (symbol == '-')
 		_value = 0 - _value;
 }
-//赋值运算符重载
+
 BigData& BigData::operator=(const BigData& b)
 {
 	if (this != &b)
@@ -95,7 +93,7 @@ BigData& BigData::operator=(const BigData& b)
 	}
 	return *this;
 }
-//重载+号
+
 BigData BigData::operator+(const BigData& b)
 {
 	if (!IsINT64Overflow() && !b.IsINT64Overflow())
@@ -117,7 +115,6 @@ BigData BigData::operator+(const BigData& b)
 		return BigData(Add(_strData, b._strData));
 	return BigData(Sub(_strData, b._strData));
 }
-//重载-号
 BigData BigData::operator-(const BigData& b)
 {
 	if (!IsINT64Overflow() && !b.IsINT64Overflow())
@@ -140,7 +137,7 @@ BigData BigData::operator-(const BigData& b)
 		return BigData(Sub(_strData, b._strData));
 	return BigData(Add(_strData, b._strData));
 }
-//重载*号
+
 BigData BigData::operator*(const BigData& b)
 {
 	if (_value == 0 || b._value == 0)
@@ -151,7 +148,6 @@ BigData BigData::operator*(const BigData& b)
 		return BigData(_strData);
 	return BigData(Mul(_strData, b._strData));
 }
-//重载/号
 BigData BigData::operator/(const BigData& b)
 {
 	//商值为0,1，-1
@@ -181,7 +177,7 @@ BigData BigData::operator/(const BigData& b)
 
 	return BigData(Div(_strData, b._strData));
 }
-//判断是否超过范围，需要用string表示
+
 bool BigData::IsINT64Overflow()const
 {
 	std::string strTemp("+9223372036854775807");
