@@ -1,5 +1,5 @@
 #include"BigData.hpp"
-
+1
 
 void TestAtoi()
 {
@@ -44,13 +44,13 @@ void Testadd()
 	BigData b4("-33333333");
 	BigData b5("");
 	b5 = b1 + b3;
-	cout << b1 + b3 << endl;//Õý Õý  Õý
-	cout << b2 + b4 << endl;//¸º ¸º  ¸º
+	cout << b1 + b3 << endl;//æ­£ æ­£  æ­£
+	cout << b2 + b4 << endl;//è´Ÿ è´Ÿ  è´Ÿ
 
-	cout << b1 + b4 << endl;//Õý ¸º  Õý
-	cout << b3 + b2 << endl;//Õý ¸º  ¸º
-	cout << b4 + b1 << endl;//¸º Õý	 Õý
-	cout << b2 + b3 << endl;//¸º Õý  ¸º
+	cout << b1 + b4 << endl;//æ­£ è´Ÿ  æ­£
+	cout << b3 + b2 << endl;//æ­£ è´Ÿ  è´Ÿ
+	cout << b4 + b1 << endl;//è´Ÿ æ­£	 æ­£
+	cout << b2 + b3 << endl;//è´Ÿ æ­£  è´Ÿ
 	cout << endl;
 }
 
@@ -61,17 +61,17 @@ void Testsub()
 	BigData b3("33333333");
 	BigData b4("-33333333");
 	
-	//Í¬ºÅ µ÷sub£¬
-	cout << b3 - b1 << endl;//Õý Õý	 ¸º 
-	cout << b1 - b3 << endl;//Õý Õý  Õý 
-	cout << b2 - b4 << endl;//¸º ¸º	 ¸º
-	cout << b4 - b2 << endl;//¸º ¸º	 Õý
-	//ÒìºÅµ÷add
-	cout << b4 - b1 << endl;//¸º Õý	 ¸º
-	cout << b1 - b4 << endl;//Õý ¸º	 Õý
+	//åŒå· è°ƒsubï¼Œ
+	cout << b3 - b1 << endl;//æ­£ æ­£	 è´Ÿ 
+	cout << b1 - b3 << endl;//æ­£ æ­£  æ­£ 
+	cout << b2 - b4 << endl;//è´Ÿ è´Ÿ	 è´Ÿ
+	cout << b4 - b2 << endl;//è´Ÿ è´Ÿ	 æ­£
+	//å¼‚å·è°ƒadd
+	cout << b4 - b1 << endl;//è´Ÿ æ­£	 è´Ÿ
+	cout << b1 - b4 << endl;//æ­£ è´Ÿ	 æ­£
 	BigData b5("-555555555555555555555555555555");
 	BigData b6("-555555555555555555555555555555");
-	cout << b6 - b5 << endl;//½èÎ»
+	cout << b6 - b5 << endl;//å€Ÿä½
 
 }
 void TestMul()
