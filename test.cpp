@@ -1,5 +1,5 @@
 #include"BigData.hpp"
-1234567
+123456
 
 void TestAtoi()
 {
