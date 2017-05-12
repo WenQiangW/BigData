@@ -74,6 +74,7 @@ void Testsub()
 	cout << b6 - b5 << endl;//借位
 
 }
+
 void TestMul()
 {
 	BigData b1("-1237");
