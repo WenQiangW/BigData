@@ -1,6 +1,6 @@
 #include"BigData.hpp"
 1
-2
+
 void TestAtoi()
 {
 	// "123456789" "+123456890"  "12345asdfg123456"
